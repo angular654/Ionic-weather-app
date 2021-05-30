@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="title">
+      Now weather
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 2</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar
+  [(ngModel)]="city"
+  [showCancelButton]="shouldShowCancel"
+  placeholder="Введите город">
+</ion-searchbar>
+<ion-button color="success" expand="full" (click)="getInfo()">Получить данные</ion-button>
+<div *ngIf="loading === true" class="skeletons">
+  <ion-thumbnail slot="start">
+    <ion-skeleton-text animated></ion-skeleton-text>
+  </ion-thumbnail>
+  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    <ion-skeleton-text animated></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+    <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+</div>
+<div *ngIf="isLoad === true && loading === false" class="weather">
+  <ion-card>
+    <img src='{{info.current.condition.icon}}'>
+    <b>{{info.current.condition.text}}</b>
+    <p class="humidity">{{info.current.humidity}}<ion-icon name="water-outline"></ion-icon></p>
+    <p >Температура: {{info.current.temp_c}}°</p>
+    <p >Ощущается как {{info.current.feelslike_c}}°</p>
+    <p class="wind">Ветер: {{info.current.wind_kph}} км/ч</p>
+    <p class="pressure">Давление: {{info.current.pressure_mb}}</p>
+    <p>Локальное время: {{info.location.localtime | date:'medium'}}</p>
+  </ion-card>
+</div>
+</ion-content>

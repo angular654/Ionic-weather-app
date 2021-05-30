@@ -1,0 +1,28 @@
+.center {
+    margin-left: 50px;
+}
+.weather {
+    text-align: center;
+    .humidity {
+        color: rgb(113, 113, 192);
+        font-weight: 700;
+    }
+}
+#temp {
+    color: rgb(57, 48, 97);
+    font-weight: 500;
+}
+.skeletons {
+    padding-left: 40px;
+}
+.content {
+    --background: url(../../assets/after_noon.png) 70% 0/100% 100% no-repeat;
+}
+
+.title {
+    text-align: center;
+    width: 95%;
+    padding: 10px;
+    color: rgb(250, 173, 31);
+    font-weight: 700;
+}

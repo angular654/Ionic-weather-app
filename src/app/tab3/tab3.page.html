@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="settings-outline" class="center" size="large"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="content">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Settings</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item>
+    <ion-label>Тема</ion-label>
+    <ion-toggle slot="end" (ionChange)='toggleTheme($event)' color="tertiary" checked="true"></ion-toggle>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="title">
+      Weather App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar
+  [(ngModel)]="city"
+  [showCancelButton]="shouldShowCancel"
+  placeholder="Введите город">
+</ion-searchbar>
+  <ion-item>
+    <ion-input type="number"[(ngModel)]="days" placeholder="Введите кол-во дней"></ion-input>
+    <ion-label>Дни</ion-label>
+    <ion-select [(ngModel)]="days" okText="Выбрать" cancelText="Выйти" (ionChange)="getInfo(days)">
+      <ion-select-option value=1>1</ion-select-option>
+      <ion-select-option value=2>2</ion-select-option>
+      <ion-select-option value=3>3</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div *ngFor="let day of info; index as i;">
+    <ion-card>
+      <ion-item>
+        <img src="{{day.day.condition.icon}}">
+      </ion-item>
+      <ion-card-header>
+        <ion-card-subtitle>{{day.date | date:'medium'}}</ion-card-subtitle>
+        <ion-card-title>{{day.day.condition.text}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <b style="color:royalblue; font-size:150%;">{{day.day.avghumidity}}<ion-icon name="water-outline"></ion-icon></b><br>
+        <b>Средняя температура: {{day.day.avgtemp_c}}°</b><br>
+        <b style="color:rgb(189, 73, 20)">Максимальная температура: {{day.day.maxtemp_c}}°</b><br>
+        <b>Вероятность дождя: {{day.day.daily_chance_of_rain}}%</b><br>
+        <b>Средняя скорость ветра: {{day.day.avgvis_km}}км/ч</b><br>
+        <b style="color:rgb(189, 73, 20)">Максимальная скорость ветра: {{day.day.maxwind_kph}}км/ч</b><br>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
