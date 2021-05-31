@@ -16,9 +16,9 @@ export class Tab2Page {
   ngAfterViewInit() {
     this.getInfo()
   }
-    getInfo() {
+    async getInfo() {
       this.loading = true
-      this.weather.getWeatherNow(this.city).subscribe(res => {
+    await this.weather.getWeatherNow(this.city).then(res => {
         console.log(res),
         this.info = res,
         this.loading = false

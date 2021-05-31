@@ -16,10 +16,10 @@ export class WeatherService {
 
   constructor( private http:HttpClient) { }
 
-   getWeatherNow(city:string) {
-    return this.http.get(`http://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${city}&aqi=no`,this.httpOptions)
+   async getWeatherNow(city:string) {
+    return await this.http.get(`https://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${city}&aqi=no`,this.httpOptions).toPromise()
   }
-  getWeatherForecast(city:string,days:Number,aqi:string) {
-    return this.http.get(`http://api.weatherapi.com/v1/forecast.json?key=${this.apiKey}&q=${city}&days=${days}&aqi=${aqi}&alerts=yes`,this.httpOptions)
+  async getWeatherForecast(city:string,days:Number,aqi:string) {
+    return await this.http.get(`https://api.weatherapi.com/v1/forecast.json?key=${this.apiKey}&q=${city}&days=${days}&aqi=${aqi}&alerts=yes`,this.httpOptions).toPromise()
   }
 }

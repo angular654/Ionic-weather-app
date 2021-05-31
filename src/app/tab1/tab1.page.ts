@@ -15,7 +15,7 @@ export class Tab1Page {
     this.getInfo(this.days)
   }
   getInfo(days:Number) {
-    this.weather.getWeatherForecast(this.city,days,"no").subscribe((res:any) =>{
+    this.weather.getWeatherForecast(this.city,days,"no").then((res:any) =>{
       this.info = res.forecast.forecastday
       console.log(this.info)
    })
